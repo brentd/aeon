@@ -43,13 +43,13 @@ module Aeon
     end
     
     def look
-      display(@animated_object.room)
+      display(@animated_object.room.name)
     end
     
     def display(object)
       case object
       when String
-        client.display(str) if client
+        client.display(object) if client
       else
         
       end

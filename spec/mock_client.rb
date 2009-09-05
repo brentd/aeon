@@ -24,9 +24,9 @@ class MockClient
   #
   def pretty_transcript
     if @transcript
-      msg =  "\n+=================================<( TRANSCRIPT )>=================================+\n"
+      msg =  "\n+=================================<( TRANSCRIPT )>==================================\n"
       msg << "| " << @transcript.strip.gsub(/\n/, "\n| ")
-      msg << "\n+==================================================================================+\n"
+      msg << "\n+===================================================================================\n"
     else
       msg = "Transcript was empty."
     end
@@ -67,7 +67,7 @@ class BeDisplayed
   
   def failure_message_for_should
     str = "Expected to be displayed: #{@expected.inspect}\n"
-    str << @client.pretty_transcript
+    # str << @client.pretty_transcript
   end
 end
 
