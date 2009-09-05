@@ -27,7 +27,7 @@ module Aeon
     end
 
     [:north, :south, :east, :west, :up, :down].each do |direction|
-      instance_eval <<-INSTANCE_EVAL                          
+      instance_eval <<-EVAL
         command :#{direction} do |input|             # command :east do |input| 
           if @animated_object.move(:#{direction})    #   if @animated_object.move(:east)
             look                                     #     look
@@ -35,7 +35,7 @@ module Aeon
             display "Alas, you cannot go that way."  #     display "Alas, you cannot go that way."
           end                                        #   end
         end                                          # end
-      INSTANCE_EVAL
+      EVAL
     end
     
     command :whoami do |input|
@@ -43,21 +43,19 @@ module Aeon
     end
     
     def look
-      display(@animated_object.room.name)
+      display(@animated_object.room)
     end
     
     def display(object)
+      return unless client
+      
       case object
       when String
-        client.display(object) if client
+        client.display(object)
       else
-        
+        client.display(Template.new(self, object).render)
       end
     end
-    
-    # def template(template_name, )
-    #   
-    # end
     
   end
 end

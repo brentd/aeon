@@ -18,7 +18,7 @@ require 'dm-core'
 require 'dm-validations'
 require 'dm-timestamps'
 require 'dm-ar-finders'
-
+require 'active_support/inflector'
 require 'change_class'
 
 # Setup the database.
@@ -40,4 +40,5 @@ Aeon::Reloader.observe do
   require 'aeon/player'
   require 'aeon/character'
   require 'aeon/room'
+  require 'aeon/template'
 end
