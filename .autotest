@@ -1,0 +1,22 @@
+ENV['RUBY'] ||= 'ruby1.9'
+Cucumber::RUBY_BINARY = 'ruby1.9'
+
+Autotest.add_hook :initialize do |at|
+  at.clear_mappings
+  at.add_exception(/\.git|db|doc|log/)
+  
+  # modifying a spec reruns that spec
+  # at.add_mapping(%r%^spec/.*_spec.rb$%) { |filename, _| 
+  #   filename 
+  # }
+  
+  # map files in lib/aeon to spec files in spec/unit
+  at.add_mapping(%r%^lib/aeon/(.*)\.rb$%) { |_, m| 
+    "spec/unit/#{m[1]}_spec.rb"
+  }
+  
+  # modifying spec_helper reruns all specs 
+  at.add_mapping(%r%^spec/spec_helper\.rb$%) { 
+    at.files_matching %r%^spec/.*_spec\.rb$%
+  }
+end

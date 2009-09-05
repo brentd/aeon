@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+irb -I lib -r lib/aeon.rb
