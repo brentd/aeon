@@ -18,8 +18,7 @@ require 'dm-core'
 require 'dm-validations'
 require 'dm-timestamps'
 require 'dm-ar-finders'
-gem 'RubyInline'
-require 'inline'
+
 require 'change_class'
 
 # Setup the database.
