@@ -48,8 +48,3 @@ Feature: Moving around the world
     Then I should not be displayed "Ethrin"
     When I enter "east"
     Then I should be displayed "Ethrin"
-    
-    
-    
-    
-  

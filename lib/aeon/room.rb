@@ -55,11 +55,12 @@ module Aeon
       :down  => :up
     }
     
-    def self.find_by_coords(coords)
-      first x:    coords[0], 
-            y:    coords[1], 
-            z:    (coords[2] || 0), 
-            zone: (coords[3] || 0)
+    def self.find_by_coords(coords, extra_conditions={})
+      conditions = { x:    coords[0],
+                     y:    coords[1],
+                     z:    (coords[2] || 0),
+                     zone: (coords[3] || 0) }
+      first(conditions.merge!(extra_conditions))
     end
     
     def self.default_room
@@ -70,9 +71,18 @@ module Aeon
       OPPOSITES[direction.to_sym]
     end
     
+    def render
+      lines = []
+      lines << name
+      lines << description
+      lines += characters.collect(&:name)
+      lines.join("\n")
+    end
+    
     def inspect
-       exits_hash = exits.inject({}) {|h, (dir,room)| h[dir] = room.id; h}
-      "#<Aeon::Room id=#{id.inspect} name=#{name.inspect} coords=#{coords.to_a.inspect} exits=#{exits_hash.inspect}>"
+      exits_hash = exits.inject({}) {|h, (dir,room)| h[dir] = room.id; h}
+      "#<Aeon::Room id=#{id.inspect} name=#{name.inspect}" +
+      " coords=#{coords.to_a.inspect} exits=#{exits_hash.inspect}>"
     end
     
     def link(room, direction)
@@ -152,7 +162,7 @@ module Aeon
     
     def coords=(coords)
       self.x, self.y, self.z, self.zone = coords.to_a
-      coords
+      self.coords
     end
     
     def has_coordinates?
@@ -163,8 +173,8 @@ module Aeon
       !!direction_to(room)
     end
     
-    def changed_coordinates?
-      attribute_dirty?(:x) || attribute_dirty?(:y) || attribute_dirty?(:z) || attribute_dirty?(:z)
+    def changed_coordinates? 
+      [:x, :y, :z, :zone].any? {|a| attribute_dirty?(a)}
     end
     
     # @return [Hash] rooms directly adjacent to this room on the coordinate
@@ -210,14 +220,14 @@ module Aeon
     
     private
     
+    # Sets coordinates of the room to the origin (0,0) if not set. Raises
+    # RoomExistsAtCoordinatesError if a room already exists at the room's
+    # coordinates. Called before save.
     def set_coordinates
-      unless has_coordinates?
-        self.x, self.y = 0, 0
-      end
-      if existing_room = Room.find_by_coords(coords)
-        unless existing_room.id == self.id
-          raise(RoomExistsAtCoordinatesError, "Room exists: #{existing_room.inspect}") 
-        end
+      self.x ||= 0
+      self.y ||= 0
+      if existing_room = Room.find_by_coords(coords, :id.not => self.id)
+        raise(RoomExistsAtCoordinatesError, "Room exists: #{existing_room.inspect}") 
       end
     end
     

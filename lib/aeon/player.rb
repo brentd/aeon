@@ -49,12 +49,7 @@ module Aeon
     def display(object)
       return unless client
       
-      case object
-      when String
-        client.display(object)
-      else
-        client.display(Template.new(self, object).render)
-      end
+      object.is_a?(String) ? client.display(object) : client.display(object.render)
     end
     
   end

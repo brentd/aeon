@@ -40,5 +40,4 @@ Aeon::Reloader.observe do
   require 'aeon/player'
   require 'aeon/character'
   require 'aeon/room'
-  require 'aeon/template'
 end
