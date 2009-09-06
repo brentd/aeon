@@ -1,4 +1,7 @@
 gem 'eventmachine'
+gem 'activesupport'
+gem 'term-ansicolor'
+
 gem 'do_sqlite3'
 gem 'dm-core'
 gem 'dm-validations'

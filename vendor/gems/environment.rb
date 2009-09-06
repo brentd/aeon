@@ -7,6 +7,8 @@ module Bundler
   ENV["PATH"]     = "#{dir}/../bin:#{ENV["PATH"]}"
   ENV["RUBYOPT"]  = "-r#{__FILE__} #{ENV["RUBYOPT"]}"
 
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/activesupport-2.3.3/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/activesupport-2.3.3/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/addressable-2.0.2/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/addressable-2.0.2/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/change_class-1.0.1/bin")
@@ -35,6 +37,8 @@ module Bundler
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/rspec-1.2.8/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/RubyInline-3.8.3/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/RubyInline-3.8.3/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/term-ansicolor-1.0.4/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/term-ansicolor-1.0.4/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ZenTest-4.1.4/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ZenTest-4.1.4/lib")
 
@@ -43,6 +47,8 @@ module Bundler
   require "rubygems"
 
   @bundled_specs = {}
+  @bundled_specs["activesupport"] = eval(File.read("#{dir}/specifications/activesupport-2.3.3.gemspec"))
+  @bundled_specs["activesupport"].loaded_from = "#{dir}/specifications/activesupport-2.3.3.gemspec"
   @bundled_specs["addressable"] = eval(File.read("#{dir}/specifications/addressable-2.0.2.gemspec"))
   @bundled_specs["addressable"].loaded_from = "#{dir}/specifications/addressable-2.0.2.gemspec"
   @bundled_specs["change_class"] = eval(File.read("#{dir}/specifications/change_class-1.0.1.gemspec"))
@@ -71,6 +77,8 @@ module Bundler
   @bundled_specs["rspec"].loaded_from = "#{dir}/specifications/rspec-1.2.8.gemspec"
   @bundled_specs["RubyInline"] = eval(File.read("#{dir}/specifications/RubyInline-3.8.3.gemspec"))
   @bundled_specs["RubyInline"].loaded_from = "#{dir}/specifications/RubyInline-3.8.3.gemspec"
+  @bundled_specs["term-ansicolor"] = eval(File.read("#{dir}/specifications/term-ansicolor-1.0.4.gemspec"))
+  @bundled_specs["term-ansicolor"].loaded_from = "#{dir}/specifications/term-ansicolor-1.0.4.gemspec"
   @bundled_specs["ZenTest"] = eval(File.read("#{dir}/specifications/ZenTest-4.1.4.gemspec"))
   @bundled_specs["ZenTest"].loaded_from = "#{dir}/specifications/ZenTest-4.1.4.gemspec"
 
