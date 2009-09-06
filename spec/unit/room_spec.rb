@@ -13,6 +13,16 @@ describe Aeon::Room do
     room.errors[:description].should_not be_nil
   end
   
+  describe "description" do
+    it "should not allow a description's width to be greater than 80 characters" do
+      desc = "First line is OK\n"
+      desc << ("FAIL" * 25) # 100 characters
+      room = Aeon::Room.make(:description => desc)
+      room.should_not be_valid
+      room.errors[:description].should_not be_nil
+    end
+  end
+  
   describe "#link" do
     [:north, :east, :south, :west, :up, :down].each do |direction|
       it "should link #{direction}" do

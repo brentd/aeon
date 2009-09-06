@@ -34,6 +34,7 @@ module Aeon
     before :save, :autolink!
     
     validates_present :name, :description
+    validates_with_method :description, :method => :check_description_width
     
     DIRECTIONS = [:north, :south, :east, :west, :up, :down]
     
@@ -235,5 +236,15 @@ module Aeon
         end
       end
     
+      def check_description_width
+        return unless description
+        lines = description.split("\n")
+        if lines.any? {|l| l.uncolored.size > 80}
+          [false, "width must not greater be than 80 characters"]
+        else
+          true
+        end
+      end
+      
   end
 end
