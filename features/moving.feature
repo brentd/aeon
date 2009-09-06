@@ -3,7 +3,7 @@ Feature: Moving around the world
   As a player
   I want enter commands that allow me to move between rooms
 
-  Scenario: Seeing the room description after connecting
+  Scenario: Connecting with a new character
     Given a room
     And I am a connected player
     Then I should be displayed "Room 0,0"
@@ -24,7 +24,7 @@ Feature: Moving around the world
     When I enter "s"
     Then I should be displayed "Room 0,0"
     
-  Scenario: Trying to move a direction where there isn't a room
+  Scenario: Trying to move in a direction where there isn't a room
     Given a room
     And I am a connected player
     Then I should be displayed "Room 0,0"
@@ -44,7 +44,6 @@ Feature: Moving around the world
     Given "r1" is west of "r2"
     And I am a connected player in room "r1"
     And a connected player named "Ethrin" in room "r2"
-    And my character is in room "r1"
     Then I should not be displayed "Ethrin"
     When I enter "east"
     Then I should be displayed "Ethrin"
