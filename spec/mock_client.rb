@@ -28,18 +28,16 @@ class MockClient
       msg << "| " << @transcript.strip.gsub(/\n/, "\n| ")
       msg << "\n+===================================================================================\n"
     else
-      msg = "Transcript was empty."
+      "Transcript was empty."
     end
   end
   
-  # add received data to the transcript as input
   def receive_data(data)
-    @transcript << "\n> #{data}\n"
+    @transcript << "\n> #{data}"
     @input << data
     super(data)
   end
   
-  # add received data to the transcript as output
   def send_data(data)
     @transcript << data
     @output << data

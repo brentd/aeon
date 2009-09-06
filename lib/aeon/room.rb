@@ -28,6 +28,8 @@ module Aeon
     belongs_to :up,    :class_name => "Room", :child_key => [:up_id]
     belongs_to :down,  :class_name => "Room", :child_key => [:down_id]
     
+    has n, :characters
+    
     before :save, :set_coordinates
     before :save, :autolink!
     
@@ -70,7 +72,7 @@ module Aeon
     
     def inspect
        exits_hash = exits.inject({}) {|h, (dir,room)| h[dir] = room.id; h}
-      "#<Aeon::Room id=#{id.inspect} name=#{name.inspect} coords:#{coords.to_a.inspect} exits:#{exits_hash.inspect}>"
+      "#<Aeon::Room id=#{id.inspect} name=#{name.inspect} coords=#{coords.to_a.inspect} exits=#{exits_hash.inspect}>"
     end
     
     def link(room, direction)
@@ -132,7 +134,7 @@ module Aeon
       end
     end
     
-    # @return [Hash] connected rooms by direction
+    # @return [Hash] rooms connected to this one indexed by direction
     def exits
       hash = {}
       DIRECTIONS.each do |direction|

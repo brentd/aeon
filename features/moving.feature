@@ -40,7 +40,7 @@ Feature: Moving around the world
     When I enter "d"
     Then I should be displayed "r1"
     
-  Scenario: Seeing other characters in the room
+  Scenario: Seeing other characters
     Given "r1" is west of "r2"
     And I am a connected player
     And a connected player named "Ethrin" in room "r2"

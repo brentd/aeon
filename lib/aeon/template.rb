@@ -2,7 +2,8 @@ require 'erb'
 
 module Aeon
   # Template objects represent a template file that converts an object into a
-  # string destined for the Player's screen.
+  # string destined for the Player's screen. Template files are evaluated with
+  # ERB and rendered in the Template object's context.
   class Template
     CONTENT_CACHE = {}
     
@@ -14,7 +15,7 @@ module Aeon
     end
     
     def render
-      ERB.new(file_content).result(binding)
+      ERB.new(file_content, nil, "-").result(binding)
     end
     
     def file_content
