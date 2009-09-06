@@ -33,6 +33,8 @@ module Aeon
     before :save, :set_coordinates
     before :save, :autolink!
     
+    validates_present :name, :description
+    
     DIRECTIONS = [:north, :south, :east, :west, :up, :down]
     
     VECTORS_BY_DIRECTION = {

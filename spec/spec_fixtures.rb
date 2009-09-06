@@ -7,3 +7,8 @@ Aeon::Player.fixture {{
 Aeon::Character.fixture {{
   :name => "Test Character"
 }}
+
+Aeon::Room.fixture {{
+  :name => "Test Room",
+  :description => "Just a test room"
+}}

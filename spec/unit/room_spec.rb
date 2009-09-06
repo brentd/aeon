@@ -1,6 +1,18 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Aeon::Room do
+  it "should require a name" do
+    room = Aeon::Room.new
+    room.should_not be_valid
+    room.errors[:name].should_not be_nil
+  end
+  
+  it "should require a description" do
+    room = Aeon::Room.new(:name => "Foo Room")
+    room.should_not be_valid
+    room.errors[:description].should_not be_nil
+  end
+  
   describe "#link" do
     [:north, :east, :south, :west, :up, :down].each do |direction|
       it "should link #{direction}" do
@@ -51,8 +63,8 @@ describe Aeon::Room do
   
   describe "autolink" do
     it "should automatically link adjacent rooms" do
-      r1 = Aeon::Room.create(x: 0, y: 0, autolink: true)
-      r2 = Aeon::Room.create(x: 0, y: 1)
+      r1 = Aeon::Room.gen(x: 0, y: 0, autolink: true)
+      r2 = Aeon::Room.gen(x: 0, y: 1)
       
       r2.reload.south.should == r1
       r1.reload.north.should == r2
@@ -71,12 +83,12 @@ describe Aeon::Room do
     end
     
     it "should preserve existing links to other zones" do
-      room = Aeon::Room.create(name: "Room 0,0", x: 0, y: 0, zone: 0, autolink: true)
-      room_in_another_zone = Aeon::Room.create(name: "Room in another zone", zone: 5)
+      room = Aeon::Room.gen(name: "Room 0,0", x: 0, y: 0, zone: 0, autolink: true)
+      room_in_another_zone = Aeon::Room.gen(name: "Room in another zone", zone: 5)
       
       room.link(room_in_another_zone, :east)
 
-      east_room = Aeon::Room.create(name: "Room 1,0", x: 1, y: 0, zone: 0, autolink: true)
+      east_room = Aeon::Room.gen(name: "Room 1,0", x: 1, y: 0, zone: 0, autolink: true)
       
       room.reload.east.should == room_in_another_zone
       room_in_another_zone.reload.west.should == room
@@ -98,8 +110,8 @@ describe Aeon::Room do
     
     it "should not allow rooms at the same coordinates" do
       lambda {
-        Aeon::Room.create(:x => 0, :y => 0)
-        Aeon::Room.create(:x => 0, :y => 0)
+        Aeon::Room.gen(:x => 0, :y => 0)
+        Aeon::Room.gen(:x => 0, :y => 0)
       }.should raise_error(Aeon::RoomExistsAtCoordinatesError)
     end
   end
