@@ -1,9 +1,0 @@
-Aeon is a MUD engine written for Ruby 1.9
------------------------------------------
-
-Overview / Planned Features:
-
-* EventMachine for network connections
-* Sinatra-based web interface for room/npc/item creation
-* In-game ASCII maps (very simple) with line-of-sight
-* All world interactions happen as Event objects
