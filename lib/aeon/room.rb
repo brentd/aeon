@@ -73,7 +73,9 @@ module Aeon
     
     def render
       lines = []
-      lines << name
+      lines << Color.white(Color.bold(name))
+      exit_list = exits.keys.collect {|k| k.to_s[0]}.join(', ')
+      lines << Color.cyan("Exits: [#{exit_list}]")
       lines << description
       lines += characters.collect(&:name)
       lines.join("\n")
@@ -220,16 +222,16 @@ module Aeon
     
     private
     
-    # Sets coordinates of the room to the origin (0,0) if not set. Raises
-    # RoomExistsAtCoordinatesError if a room already exists at the room's
-    # coordinates. Called before save.
-    def set_coordinates
-      self.x ||= 0
-      self.y ||= 0
-      if existing_room = Room.find_by_coords(coords, :id.not => self.id)
-        raise(RoomExistsAtCoordinatesError, "Room exists: #{existing_room.inspect}") 
+      # Sets coordinates of the room to the origin (0,0) if not set. Raises
+      # RoomExistsAtCoordinatesError if a room already exists at the room's
+      # coordinates. Called before save.
+      def set_coordinates
+        self.x ||= 0
+        self.y ||= 0
+        if existing_room = Room.find_by_coords(coords, :id.not => self.id)
+          raise(RoomExistsAtCoordinatesError, "Room exists: #{existing_room.inspect}") 
+        end
       end
-    end
     
   end
 end

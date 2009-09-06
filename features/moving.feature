@@ -42,9 +42,21 @@ Feature: Moving around the world
     
   Scenario: Seeing other characters
     Given "r1" is west of "r2"
-    And I am a connected player
+    And I am a connected player in room "r1"
     And a connected player named "Ethrin" in room "r2"
     And my character is in room "r1"
     Then I should not be displayed "Ethrin"
     When I enter "east"
     Then I should be displayed "Ethrin"
+    
+  Scenario: Showing one exit
+    Given "r1" is west of "r2"
+    And I am a connected player in room "r1"
+    Then I should be displayed "Exits: [e]"
+    
+  Scenario: Showing multiple exits
+    Given "r2" is west of "r1"
+    And "r3" is east of "r1"
+    And "r4" is up from "r1"
+    And I am a connected player in room "r1"
+    Then I should be displayed "Exits: [e, w, u]"

@@ -42,13 +42,16 @@ module Aeon
       display name
     end
     
+    command :look do |input|
+      look
+    end
+    
     def look
       display(@animated_object.room)
     end
     
     def display(object)
       return unless client
-      
       object.is_a?(String) ? client.display(object) : client.display(object.render)
     end
     

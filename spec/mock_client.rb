@@ -33,7 +33,7 @@ class MockClient
   end
   
   def receive_data(data)
-    @transcript << "\n> #{data}"
+    @transcript << "\n> #{data}".yellow
     @input << data
     super(data)
   end

@@ -8,6 +8,13 @@ Given /^I am a connected player$/ do
   @client.login(@player)
 end
 
+Given /^I am a connected player in room "([^\"]*)"$/ do |room|
+  @player = Aeon::Player.gen
+  @player.character.update_attributes(:room => Aeon::Room.find_by_name(room))
+  @client = MockClient.new
+  @client.login(@player)  
+end 
+
 Given /^a connected player named "([^\"]*)" in room "([^\"]*)"$/ do |name, room|
   room = Aeon::Room.find_by_name(room)
   player = Aeon::Player.gen(
