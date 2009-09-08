@@ -21,8 +21,8 @@ module Aeon
     end
     
     def animate
-      character.become_animated(self)
       @animated_object = character
+      @animated_object.become_animated(self)
       look
     end
 
@@ -44,6 +44,10 @@ module Aeon
     
     command :look do |input|
       look
+    end
+    
+    command :say do |input|
+      SpeechEvent.new(instigator: @animated_object, target: @animated_object.room, speech: input)
     end
     
     def look

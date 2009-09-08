@@ -18,9 +18,11 @@ module Aeon
     
     module InstanceMethods
       def invoke_command(input)
-        results = self.class.commands.grep(/^#{input}/)
-        if command = results.first
-          send("cmd_#{command}", input)
+        entered_command = input.match(/^\w+/)[0]
+
+        if command = self.class.commands.grep(/^#{entered_command}/).first
+          args = input.gsub(/^#{command}(\s+)?/, '')
+          send("cmd_#{command}", args)
         else
           display("Huh?")
         end

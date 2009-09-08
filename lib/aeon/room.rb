@@ -67,7 +67,7 @@ module Aeon
     end
     
     def self.default_room
-      Aeon::Room.first || Aeon::Room.create(:name => "The Void")
+      Aeon::Room.first || Aeon::Room.create(:name => "The Void", :description => "Nothingness surrounds you.")
     end
     
     def self.opposite(direction)
@@ -82,6 +82,15 @@ module Aeon
       lines << description
       lines += characters.collect(&:name)
       lines.join("\n")
+    end
+    
+    # TODO: this is a stub
+    def objects
+      characters
+    end
+    
+    def notify(event)
+      objects.each {|o| o.notify(event)}
     end
     
     def inspect
@@ -235,12 +244,13 @@ module Aeon
           raise(RoomExistsAtCoordinatesError, "Room exists: #{existing_room.inspect}") 
         end
       end
-    
+      
+      # Validation for width of description - no line should be greater than
+      # 80 characters.
       def check_description_width
         return unless description
-        lines = description.split("\n")
-        if lines.any? {|l| l.uncolored.size > 80}
-          [false, "width must not greater be than 80 characters"]
+        if description.lines.any? {|l| l.uncolored.size > 80}
+          [false, "width must not be greater than 80 characters"]
         else
           true
         end

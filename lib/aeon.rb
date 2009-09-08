@@ -27,6 +27,7 @@ DataMapper.setup(:default, :adapter => 'sqlite3', :database => 'db/db.sqlite3')
 require 'aeon/extensions/object'
 require 'aeon/extensions/object_space'
 require 'aeon/extensions/color'
+require 'aeon/extensions/datamapper/repository'
 
 require 'aeon/server'
 require 'aeon/reloader'
@@ -41,4 +42,5 @@ Aeon::Reloader.observe do
   require 'aeon/player'
   require 'aeon/character'
   require 'aeon/room'
+  require 'aeon/event'
 end

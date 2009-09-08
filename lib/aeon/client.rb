@@ -22,7 +22,7 @@ module Aeon
         end
       end
     rescue Exception => e
-      raise e if AEON_ENV == :test
+      raise e #if AEON_ENV == :test
     end
     
     # Called when the client disconnects
