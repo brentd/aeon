@@ -24,7 +24,7 @@ class MockClient
   #
   def pretty_transcript
     if @transcript
-      msg =  "\n+=================================<( TRANSCRIPT )>==================================\n"
+      msg =  "\n+=================================<( #{@player.name} )>==================================\n"
       msg << "| " << @transcript.strip.gsub(/\n/, "\n| ")
       msg << "\n+===================================================================================\n"
     else
@@ -35,7 +35,7 @@ class MockClient
   def receive_data(data)
     @transcript << "\n> #{data}".yellow
     @input << data
-    super(data)
+    super
   end
   
   def send_data(data)

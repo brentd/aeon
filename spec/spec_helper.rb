@@ -10,10 +10,12 @@ require 'dm-sweatshop'
 require File.dirname(__FILE__) + '/spec_fixtures'
 require File.dirname(__FILE__) + '/mock_client'
 
+# DataMapper.logger.set_log(STDOUT, :debug)
+
 Spec::Runner.configure do |config|
   config.before(:each) do
     DataMapper.auto_migrate!
-    # DataMapper::Repository.reset_identity_maps!
+    DataMapper::Repository.reset_identity_maps!
   end
 end
 
