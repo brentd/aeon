@@ -1,5 +1,5 @@
 Aeon is a MUD engine written for Ruby 1.9
------------------------------------------
+=========================================
 
 Overview / Planned Features:
 
@@ -13,10 +13,30 @@ Aeon is in its very, very early stages of development, and in fact is pretty
 much a toy at this point to explore fun design patterns and Cucumber for
 integration testing.
 
-I've attempted to make dependencies easier to manage by using
-[bundler](http://github.com/wycats/bundler/), but EventMachine and RubyInline
-have native extensions and are causing problems at the moment. May need to write
-a rake task that'll run extconf.rb in those two projects and `make` them.
+Installation
+------------
+
+Gem dependencies are included via [bundler](http://github.com/wycats/bundler/).
+If you don't have bundler installed already, first install it:
+
+    gem install bundler
+
+Gem dependencies are defined in the `Gemfile` and are packaged in
+`vendor/gems`. Because some gems have native extensions, only the .gem files
+are kept in version control, so from the root of the project you need to run:
+
+    gem bundle
+
+Running the Specs
+-----------------
+
+Run the whole suite with `rake`.
+
+For running individual specs, you should use the bundled spec executable:
+
+    ./vendor/bin/spec spec/some_spec.rb
+    
+NOTE: some specs are failing after an update to DataMapper.
 
 Looking for Collaborators
 -------------------------
