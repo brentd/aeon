@@ -1,3 +1,6 @@
+clear_sources
+source "http://gemcutter.org"
+
 gem 'eventmachine'
 gem 'activesupport'
 gem 'term-ansicolor'

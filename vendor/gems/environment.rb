@@ -1,86 +1,87 @@
 # DO NOT MODIFY THIS FILE
 module Bundler
-  dir = File.dirname(__FILE__)
+ file = File.expand_path(__FILE__)
+ dir = File.dirname(file)
 
   ENV["GEM_HOME"] = dir
   ENV["GEM_PATH"] = dir
   ENV["PATH"]     = "#{dir}/../bin:#{ENV["PATH"]}"
-  ENV["RUBYOPT"]  = "-r#{__FILE__} #{ENV["RUBYOPT"]}"
+  ENV["RUBYOPT"]  = "-r#{file} #{ENV["RUBYOPT"]}"
 
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/activesupport-2.3.3/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/activesupport-2.3.3/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/addressable-2.0.2/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/addressable-2.0.2/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/change_class-1.0.1/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/change_class-1.0.1/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/data_objects-0.9.12/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/data_objects-0.9.12/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-ar-finders-0.9.11/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-ar-finders-0.9.11/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-core-0.9.11/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-core-0.9.11/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-sweatshop-0.9.11/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-sweatshop-0.9.11/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-timestamps-0.9.11/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-timestamps-0.9.11/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-validations-0.9.11/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-validations-0.9.11/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/do_sqlite3-0.9.12/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/do_sqlite3-0.9.12/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/eventmachine-0.12.8/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/eventmachine-0.12.8/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/extlib-0.9.12/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/extlib-0.9.12/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/activesupport-2.3.5/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/activesupport-2.3.5/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/extlib-0.9.13/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/extlib-0.9.13/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/eventmachine-0.12.10/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/eventmachine-0.12.10/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-timestamps-0.10.1/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-timestamps-0.10.1/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/randexp-0.1.4/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/randexp-0.1.4/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/rspec-1.2.8/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/rspec-1.2.8/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/rspec-1.2.9/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/rspec-1.2.9/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/addressable-2.1.1/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/addressable-2.1.1/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-core-0.10.1/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-core-0.10.1/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-sweatshop-0.10.1/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-sweatshop-0.10.1/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-validations-0.10.1/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-validations-0.10.1/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/data_objects-0.10.0/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/data_objects-0.10.0/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/do_sqlite3-0.10.0/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/do_sqlite3-0.10.0/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-ar-finders-0.10.1/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/dm-ar-finders-0.10.1/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ZenTest-4.1.4/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ZenTest-4.1.4/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/RubyInline-3.8.3/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/RubyInline-3.8.3/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/term-ansicolor-1.0.4/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/term-ansicolor-1.0.4/lib")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ZenTest-4.1.4/bin")
-  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ZenTest-4.1.4/lib")
 
   @gemfile = "#{dir}/../../Gemfile"
 
   require "rubygems"
 
   @bundled_specs = {}
-  @bundled_specs["activesupport"] = eval(File.read("#{dir}/specifications/activesupport-2.3.3.gemspec"))
-  @bundled_specs["activesupport"].loaded_from = "#{dir}/specifications/activesupport-2.3.3.gemspec"
-  @bundled_specs["addressable"] = eval(File.read("#{dir}/specifications/addressable-2.0.2.gemspec"))
-  @bundled_specs["addressable"].loaded_from = "#{dir}/specifications/addressable-2.0.2.gemspec"
   @bundled_specs["change_class"] = eval(File.read("#{dir}/specifications/change_class-1.0.1.gemspec"))
   @bundled_specs["change_class"].loaded_from = "#{dir}/specifications/change_class-1.0.1.gemspec"
-  @bundled_specs["data_objects"] = eval(File.read("#{dir}/specifications/data_objects-0.9.12.gemspec"))
-  @bundled_specs["data_objects"].loaded_from = "#{dir}/specifications/data_objects-0.9.12.gemspec"
-  @bundled_specs["dm-ar-finders"] = eval(File.read("#{dir}/specifications/dm-ar-finders-0.9.11.gemspec"))
-  @bundled_specs["dm-ar-finders"].loaded_from = "#{dir}/specifications/dm-ar-finders-0.9.11.gemspec"
-  @bundled_specs["dm-core"] = eval(File.read("#{dir}/specifications/dm-core-0.9.11.gemspec"))
-  @bundled_specs["dm-core"].loaded_from = "#{dir}/specifications/dm-core-0.9.11.gemspec"
-  @bundled_specs["dm-sweatshop"] = eval(File.read("#{dir}/specifications/dm-sweatshop-0.9.11.gemspec"))
-  @bundled_specs["dm-sweatshop"].loaded_from = "#{dir}/specifications/dm-sweatshop-0.9.11.gemspec"
-  @bundled_specs["dm-timestamps"] = eval(File.read("#{dir}/specifications/dm-timestamps-0.9.11.gemspec"))
-  @bundled_specs["dm-timestamps"].loaded_from = "#{dir}/specifications/dm-timestamps-0.9.11.gemspec"
-  @bundled_specs["dm-validations"] = eval(File.read("#{dir}/specifications/dm-validations-0.9.11.gemspec"))
-  @bundled_specs["dm-validations"].loaded_from = "#{dir}/specifications/dm-validations-0.9.11.gemspec"
-  @bundled_specs["do_sqlite3"] = eval(File.read("#{dir}/specifications/do_sqlite3-0.9.12.gemspec"))
-  @bundled_specs["do_sqlite3"].loaded_from = "#{dir}/specifications/do_sqlite3-0.9.12.gemspec"
-  @bundled_specs["eventmachine"] = eval(File.read("#{dir}/specifications/eventmachine-0.12.8.gemspec"))
-  @bundled_specs["eventmachine"].loaded_from = "#{dir}/specifications/eventmachine-0.12.8.gemspec"
-  @bundled_specs["extlib"] = eval(File.read("#{dir}/specifications/extlib-0.9.12.gemspec"))
-  @bundled_specs["extlib"].loaded_from = "#{dir}/specifications/extlib-0.9.12.gemspec"
+  @bundled_specs["activesupport"] = eval(File.read("#{dir}/specifications/activesupport-2.3.5.gemspec"))
+  @bundled_specs["activesupport"].loaded_from = "#{dir}/specifications/activesupport-2.3.5.gemspec"
+  @bundled_specs["extlib"] = eval(File.read("#{dir}/specifications/extlib-0.9.13.gemspec"))
+  @bundled_specs["extlib"].loaded_from = "#{dir}/specifications/extlib-0.9.13.gemspec"
+  @bundled_specs["eventmachine"] = eval(File.read("#{dir}/specifications/eventmachine-0.12.10.gemspec"))
+  @bundled_specs["eventmachine"].loaded_from = "#{dir}/specifications/eventmachine-0.12.10.gemspec"
+  @bundled_specs["dm-timestamps"] = eval(File.read("#{dir}/specifications/dm-timestamps-0.10.1.gemspec"))
+  @bundled_specs["dm-timestamps"].loaded_from = "#{dir}/specifications/dm-timestamps-0.10.1.gemspec"
   @bundled_specs["randexp"] = eval(File.read("#{dir}/specifications/randexp-0.1.4.gemspec"))
   @bundled_specs["randexp"].loaded_from = "#{dir}/specifications/randexp-0.1.4.gemspec"
-  @bundled_specs["rspec"] = eval(File.read("#{dir}/specifications/rspec-1.2.8.gemspec"))
-  @bundled_specs["rspec"].loaded_from = "#{dir}/specifications/rspec-1.2.8.gemspec"
+  @bundled_specs["rspec"] = eval(File.read("#{dir}/specifications/rspec-1.2.9.gemspec"))
+  @bundled_specs["rspec"].loaded_from = "#{dir}/specifications/rspec-1.2.9.gemspec"
+  @bundled_specs["addressable"] = eval(File.read("#{dir}/specifications/addressable-2.1.1.gemspec"))
+  @bundled_specs["addressable"].loaded_from = "#{dir}/specifications/addressable-2.1.1.gemspec"
+  @bundled_specs["dm-core"] = eval(File.read("#{dir}/specifications/dm-core-0.10.1.gemspec"))
+  @bundled_specs["dm-core"].loaded_from = "#{dir}/specifications/dm-core-0.10.1.gemspec"
+  @bundled_specs["dm-sweatshop"] = eval(File.read("#{dir}/specifications/dm-sweatshop-0.10.1.gemspec"))
+  @bundled_specs["dm-sweatshop"].loaded_from = "#{dir}/specifications/dm-sweatshop-0.10.1.gemspec"
+  @bundled_specs["dm-validations"] = eval(File.read("#{dir}/specifications/dm-validations-0.10.1.gemspec"))
+  @bundled_specs["dm-validations"].loaded_from = "#{dir}/specifications/dm-validations-0.10.1.gemspec"
+  @bundled_specs["data_objects"] = eval(File.read("#{dir}/specifications/data_objects-0.10.0.gemspec"))
+  @bundled_specs["data_objects"].loaded_from = "#{dir}/specifications/data_objects-0.10.0.gemspec"
+  @bundled_specs["do_sqlite3"] = eval(File.read("#{dir}/specifications/do_sqlite3-0.10.0.gemspec"))
+  @bundled_specs["do_sqlite3"].loaded_from = "#{dir}/specifications/do_sqlite3-0.10.0.gemspec"
+  @bundled_specs["dm-ar-finders"] = eval(File.read("#{dir}/specifications/dm-ar-finders-0.10.1.gemspec"))
+  @bundled_specs["dm-ar-finders"].loaded_from = "#{dir}/specifications/dm-ar-finders-0.10.1.gemspec"
+  @bundled_specs["ZenTest"] = eval(File.read("#{dir}/specifications/ZenTest-4.1.4.gemspec"))
+  @bundled_specs["ZenTest"].loaded_from = "#{dir}/specifications/ZenTest-4.1.4.gemspec"
   @bundled_specs["RubyInline"] = eval(File.read("#{dir}/specifications/RubyInline-3.8.3.gemspec"))
   @bundled_specs["RubyInline"].loaded_from = "#{dir}/specifications/RubyInline-3.8.3.gemspec"
   @bundled_specs["term-ansicolor"] = eval(File.read("#{dir}/specifications/term-ansicolor-1.0.4.gemspec"))
   @bundled_specs["term-ansicolor"].loaded_from = "#{dir}/specifications/term-ansicolor-1.0.4.gemspec"
-  @bundled_specs["ZenTest"] = eval(File.read("#{dir}/specifications/ZenTest-4.1.4.gemspec"))
-  @bundled_specs["ZenTest"].loaded_from = "#{dir}/specifications/ZenTest-4.1.4.gemspec"
 
   def self.add_specs_to_loaded_specs
     Gem.loaded_specs.merge! @bundled_specs
@@ -98,49 +99,61 @@ module Bundler
   def self.require_env(env = nil)
     context = Class.new do
       def initialize(env) @env = env && env.to_s ; end
-      def method_missing(*) ; end
-      def only(env)
-        old, @only = @only, _combine_onlys(env)
+      def method_missing(*) ; yield if block_given? ; end
+      def only(*env)
+        old, @only = @only, _combine_only(env.flatten)
         yield
         @only = old
       end
-      def except(env)
-        old, @except = @except, _combine_excepts(env)
+      def except(*env)
+        old, @except = @except, _combine_except(env.flatten)
         yield
         @except = old
       end
       def gem(name, *args)
-        opt = args.last || {}
-        only = _combine_onlys(opt[:only] || opt["only"])
-        except = _combine_excepts(opt[:except] || opt["except"])
+        opt = args.last.is_a?(Hash) ? args.pop : {}
+        only = _combine_only(opt[:only] || opt["only"])
+        except = _combine_except(opt[:except] || opt["except"])
         files = opt[:require_as] || opt["require_as"] || name
+        files = [files] unless files.respond_to?(:each)
 
         return unless !only || only.any? {|e| e == @env }
         return if except && except.any? {|e| e == @env }
 
-        files.each { |f| require f }
+        if files = opt[:require_as] || opt["require_as"]
+          files = Array(files)
+          files.each { |f| require f }
+        else
+          begin
+            require name
+          rescue LoadError
+            # Do nothing
+          end
+        end
         yield if block_given?
         true
       end
       private
-      def _combine_onlys(only)
+      def _combine_only(only)
         return @only unless only
         only = [only].flatten.compact.uniq.map { |o| o.to_s }
         only &= @only if @only
         only
       end
-      def _combine_excepts(except)
+      def _combine_except(except)
         return @except unless except
         except = [except].flatten.compact.uniq.map { |o| o.to_s }
         except |= @except if @except
         except
       end
     end
-    context.new(env && env.to_s).instance_eval(File.read(@gemfile))
+    context.new(env && env.to_s).instance_eval(File.read(@gemfile), @gemfile, 1)
   end
 end
 
 module Gem
+  @loaded_stacks = Hash.new { |h,k| h[k] = [] }
+
   def source_index.refresh!
     super
     Bundler.add_specs_to_index

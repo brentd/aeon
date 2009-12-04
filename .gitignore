@@ -1,5 +1,7 @@
-*.o
-*.bundle
-Makefile
-mkmf.log
 *.sqlite3
+
+# Ignore expanded gems, since some will need to be compiled when `gem bundle`
+# is run. We keep the cached .gem files, though, so they don't have to be re-downloaded.
+/vendor/gems/*
+!/vendor/gems/cache
+!/vendor/gems/dirs
