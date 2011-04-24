@@ -11,8 +11,6 @@ end
 
 # Required libs.
 
-require File.join(File.dirname(__FILE__), "../vendor/gems/environment")
-
 require 'eventmachine'
 require 'dm-core'
 require 'dm-validations'
