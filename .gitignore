@@ -6,3 +6,6 @@
 !/vendor/gems/cache
 !/vendor/gems/dirs
 /vendor/bin/*
+*~
+*.swp
+.bundle/
