@@ -21,11 +21,10 @@ If you don't have bundler installed already, first install it:
 
     gem install bundler
 
-Gem dependencies are defined in the `Gemfile` and are packaged in
-`vendor/gems`. Because some gems have native extensions, only the .gem files
-are kept in version control, so from the root of the project you need to run:
+Gem dependencies are defined in the `Gemfile`. 
+From the root of the project you need to run:
 
-    gem bundle
+    bundle
 
 Running the Specs
 -----------------
@@ -34,7 +33,7 @@ Run the whole suite with `rake`.
 
 For running individual specs, you should use the bundled spec executable:
 
-    ./vendor/bin/spec spec/some_spec.rb
+    bundle exec rspec spec/some_spec.rb
     
 NOTE: some specs are failing after an update to DataMapper.
 
