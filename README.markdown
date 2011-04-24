@@ -16,7 +16,7 @@ integration testing.
 Installation
 ------------
 
-Gem dependencies are included via [bundler](http://github.com/wycats/bundler/).
+Gem dependencies are included via [bundler](http://github.com/carlhuda/bundler/).
 If you don't have bundler installed already, first install it:
 
     gem install bundler
