@@ -1,4 +1,3 @@
-clear_sources
 source "http://gemcutter.org"
 
 gem 'eventmachine'
@@ -13,9 +12,8 @@ gem 'dm-ar-finders'
 gem 'RubyInline'
 gem 'change_class'
 
-gem 'dm-sweatshop', :only => :test
-gem 'rspec', :only => :test
+group :test do 
+  gem 'dm-sweatshop'
+  gem 'rspec'
+end
 
-bin_path "vendor/bin"
-
-disable_system_gems
