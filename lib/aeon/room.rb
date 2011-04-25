@@ -33,7 +33,7 @@ module Aeon
     before :save, :set_coordinates
     before :save, :autolink!
     
-    validates_present :name, :description
+    validates_presence_of :name, :description
     validates_with_method :description, :method => :check_description_width
     
     DIRECTIONS = [:north, :south, :east, :west, :up, :down]
