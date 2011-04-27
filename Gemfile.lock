@@ -1,0 +1,66 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    ParseTree (3.0.7)
+      RubyInline (>= 3.7.0)
+      sexp_processor (>= 3.0.0)
+    RubyInline (3.9.0)
+      ZenTest (~> 4.3)
+    ZenTest (4.5.0)
+    activesupport (3.0.7)
+    addressable (2.2.5)
+    change_class (1.0.1)
+    data_objects (0.10.3)
+      addressable (~> 2.1)
+    diff-lcs (1.1.2)
+    dm-ar-finders (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-core (1.1.0)
+      addressable (~> 2.2.4)
+    dm-do-adapter (1.1.0)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.1.0)
+    dm-sqlite-adapter (1.1.0)
+      dm-do-adapter (~> 1.1.0)
+      do_sqlite3 (~> 0.10.2)
+    dm-sweatshop (1.1.0)
+      ParseTree (~> 3.0.7)
+      dm-core (~> 1.1.0)
+      randexp (~> 0.1.5)
+    dm-timestamps (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-validations (1.1.0)
+      dm-core (~> 1.1.0)
+    do_sqlite3 (0.10.3)
+      data_objects (= 0.10.3)
+    eventmachine (0.12.10)
+    randexp (0.1.5)
+      ParseTree
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+    sexp_processor (3.0.5)
+    term-ansicolor (1.0.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  RubyInline
+  activesupport
+  change_class
+  dm-ar-finders
+  dm-core (>= 1.1.0)
+  dm-sqlite-adapter
+  dm-sweatshop
+  dm-timestamps
+  dm-validations
+  do_sqlite3
+  eventmachine
+  rspec
+  term-ansicolor

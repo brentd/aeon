@@ -21,19 +21,19 @@ module Aeon
     #   r1.east = r2   # sets r1.east_id to r2.id
     #   r2.west = r1   # sets r2.west_id to r1.id
     #
-    belongs_to :north, :class_name => "Room", :child_key => [:north_id]
-    belongs_to :south, :class_name => "Room", :child_key => [:south_id]
-    belongs_to :east,  :class_name => "Room", :child_key => [:east_id]
-    belongs_to :west,  :class_name => "Room", :child_key => [:west_id]
-    belongs_to :up,    :class_name => "Room", :child_key => [:up_id]
-    belongs_to :down,  :class_name => "Room", :child_key => [:down_id]
+    belongs_to :north, :model => "Room", :child_key => [:north_id]
+    belongs_to :south, :model => "Room", :child_key => [:south_id]
+    belongs_to :east,  :model => "Room", :child_key => [:east_id]
+    belongs_to :west,  :model => "Room", :child_key => [:west_id]
+    belongs_to :up,    :model => "Room", :child_key => [:up_id]
+    belongs_to :down,  :model => "Room", :child_key => [:down_id]
     
     has n, :characters
     
     before :save, :set_coordinates
     before :save, :autolink!
     
-    validates_present :name, :description
+    validates_presence_of :name, :description
     validates_with_method :description, :method => :check_description_width
     
     DIRECTIONS = [:north, :south, :east, :west, :up, :down]
